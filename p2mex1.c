@@ -23,7 +23,6 @@ int main ()
 
     printf("\n");
 
-    matriz [C] [L] == matriz [L-1] [C+1];
     for (i=0; i<C; i++)
     {
         for (j=0; j<L; j++)
