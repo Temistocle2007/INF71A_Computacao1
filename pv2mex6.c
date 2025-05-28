@@ -1,40 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h> // Para srand() e rand()
-#include <time.h>   // Para time()
+#include <stdlib.h> 
+#include <time.h>   
 
 #define LINHAS_BINGO 5
 #define COLUNAS_BINGO 5
 #define MIN_NUMERO 0
 #define MAX_NUMERO 99
 
-// Função para preencher a cartela de bingo sem números repetidos
 void preencheBingo(int cartela[LINHAS_BINGO][COLUNAS_BINGO]) {
-    int numerosUsados[MAX_NUMERO + 1] = {0}; // Inicializa todos como 0 (não usados)
+    int numerosUsados[MAX_NUMERO + 1] = {0}; /
     int i, j;
     int numGerado;
 
-    // Inicializa o gerador de números aleatórios
     srand(time(NULL));
 
     for (i = 0; i < LINHAS_BINGO; i++) {
         for (j = 0; j < COLUNAS_BINGO; j++) {
             do {
                 numGerado = rand() % (MAX_NUMERO - MIN_NUMERO + 1) + MIN_NUMERO;
-            } while (numerosUsados[numGerado] == 1); // Repete se o número já foi usado
+            } while (numerosUsados[numGerado] == 1); 
 
             cartela[i][j] = numGerado;
-            numerosUsados[numGerado] = 1; // Marca o número como usado
+            numerosUsados[numGerado] = 1; 
         }
     }
 }
 
-// Função para imprimir a matriz (cartela de bingo)
 void imprimeMatriz(int matriz[LINHAS_BINGO][COLUNAS_BINGO], int nl, int nc) {
     int i, j;
     printf("\n--- Cartela de Bingo ---\n");
     for (i = 0; i < nl; i++) {
         for (j = 0; j < nc; j++) {
-            printf("%02d ", matriz[i][j]); // Formata para 2 dígitos
+            printf("%02d ", matriz[i][j]); 
         }
         printf("\n");
     }
